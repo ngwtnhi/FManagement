@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/fevicon.png" type="image/x-icon">
+    <title>CREATE GOODS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/Admin/sidebar.css">
+    <link rel="stylesheet" href="css/Admin/create_goods.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <a href=""><img src="img/logo.png" alt=""></a>
+        </div>
+        <ul id="sidebar_menu" class="metismenu">
+            <li>
+                <a href="Dashboard.html"><span><i class="fa-solid fa-house"></i>Thống kê</span></a>
+            </li>
+            <li>
+                <a href="List_order.html"><span><i class="fa-solid fa-list-ul"></i>Danh sách đơn hàng</span></a>
+            </li>
+
+            <button class="toggleButton" onclick="order_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Tạo đơn</span></button>
+
+            <ul class="menu">
+                <li><a href="Create_order.html"><span><i class="fa-regular fa-file-lines"></i>Đơn lẻ</span></a></li>
+                <li><a href="Create_goods.html" style="background-color: var(--light-color);width: 175px;"><span><i class="fa-regular fa-file-excel"></i>Đơn hàng loạt</span></a></li>
+            </ul>
+            <li>
+                <a href="Confirm_order.html"><span><i class="fa-regular fa-folder-closed"></i>Xác nhận đơn hàng</span></a>
+            </li>
+            <button class="toggleButton" onclick="staff_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Nhân viên</span></button>
+
+            <ul class="staff">
+                <li><a href="Staff.html"><span><i class="fa-regular fa-file-lines"></i>Thông tin cá nhân</span></a></li>
+                <li><a href="Time_work.html"><span><i class="fa-regular fa-file-excel"></i>Ca làm việc</span></a></li>
+            </ul>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <div class="nav-bar">
+            <div class="infor">
+                <div class="avt">
+                   <a href=""><img src="img/avt.jpg" alt=""></a>
+                </div>
+                <div class="name">
+                    <span>Nguyệt</span>
+                </div>
+                <div class="log-out">
+                    <div id="myLogout" class="logout-content">
+                        <a href="#" onclick="return confirmLogout()"><span>Đăng xuất </span><i class="fa-solid fa-right-from-bracket" style="color: var(--turquoise-color);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="upload">
+            <div class="upload-excel">
+                <form action="" method="get">
+                    <input type="submit" value="Chọn file Excel">
+                </form>   
+            </div>
+            <div class="upload-file">
+                <form action="" method="get">
+                    <input type="submit" value="Tải file mẫu">
+                </form>   
+            </div>
+        </div>
+        <div class="goods-backgr">
+            <table>
+                <tr>
+                  <th style="width: 280px; text-align: left;">Người nhận</th> 
+                  <th style="width: 850px; text-align: left;">Địa chỉ nhận</th>
+                  <th>Cước phí</th>
+                  <th>COD</th>
+                  <th></th>
+                </tr>    
+                <tr>
+                    <td>Nguyễn Thị Nguyệt</td>
+                    <td>Thôn 6, xã Quảng Giao, huyện Quảng Xương, tỉnh Thanh Hóa</td>
+                    <td>100.000</td>
+                    <td>12.000</td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>Nguyễn Thị Xuân Khánh</td>
+                    <td>Thôn Việt Trung, xã Quảng Giao, huyện Quảng Xương, tỉnh Thanh Hóa</td>
+                    <td>2.000.000</td>
+                    <td>12.000</td>
+                    <td></td>
+                </tr> 
+            </table>
+        </div>
+    </nav>
+
+    <script src="js/sidebar.js"></script>
+</body>
+</html>

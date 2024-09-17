@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <link rel="icon" href="img/fevicon.png" type="image/x-icon">
+  <title> FINANCE | SEARCH </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/Customer/nab_bar.css">
+  <link rel="stylesheet" href="css/Customer/search.css">
+  <link rel="stylesheet" href="css/Customer/footer.css">
+
+</head>
+<body class="sub_page">
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="header_top">
+        </div>
+            <div class="header_bottom">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container ">
+                      <div class="logo"><img src="img/logo.png" alt=""></div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="Home.html">Trang chủ<span class="sr-only"></span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Our_service.html">Dịch vụ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="About_us.html">Về chúng tôi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Price.html">Giá cả</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Contact_us.html">Liên hệ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Login_customer.html"><i class="fa-solid fa-user"></i><span style="margin-left: 5px;"> Đăng nhập</span></a>
+                                </li>
+                                <form class="form-inline">
+                                    <button class="btn nav_search-btn" onclick="scrollToSearch()"> <i class="fa fa-search" ></i></button>
+                                </form>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+      </div>
+    </header>
+  </div>
+
+
+  <section class="track_section layout_padding" >
+    <div class="track_bg_box">
+      <img src="img/track-bg.jpg" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="heading_container">
+            <h2>
+              Tìm kiếm đơn hàng của bạn
+            </h2>
+          </div>
+          <br>          
+          <form>
+            <input type="text" placeholder="Nhập mã đơn hàng bạn cần tra cứu"/>
+              <button type="submit">
+                Tìm kiếm
+              </button>
+          </form>
+        </div>
+      </div>
+    </div>  
+  </section>
+  <section class="search-order">
+    <div class="search-backgr">
+        <table>
+            <tr>
+              <th>Mã đơn hàng</th>
+              <th style="width: 450px;">Họ tên</th> 
+              <th>Số điện thoại</th>
+              <th style="width: 950px;">Địa chỉ</th>
+              <th>Cước phí</th>
+              <th>Tổng tiền</th>
+              <th>Trạng thái</th>
+            </tr>   
+            <tr>
+                <td>Nguyệt</td>
+                <td>Nguyễn Thị Nguyệt</td>
+                <td>0347698575</td>
+                <td>Thôn 6, Quảng Giao, Quảng Xương, Thanh Hóa</td>
+                <td>12000đ</td>
+                <td>212000đ</td>
+                <td>Đã nhập kho</td>
+            </tr>    
+        </table>
+    </div>
+  </section>
+  
+
+  <section class="info_section layout_padding2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 info_col">
+                <div class="info_contact">
+                    <h4>Địa chỉ</h4>
+                    <div class="contact_link_box">
+                        <a href=""><i class="fa fa-map-marker" aria-hidden="true"></i><span>Yên Nghĩa, Hà Đông, Hà Nội</span></a>
+                        <a href=""><i class="fa fa-phone" aria-hidden="true"></i><span>Call +84 123456789</span></a>
+                        <a href=""><i class="fa fa-envelope" aria-hidden="true"></i><span>finance@gmail.com</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 info_col">
+                <div class="info_detail">
+                    <h4>Thông tin</h4>
+                    <p>Dịch vụ vận chuyển hàng hóa của chúng tôi được tạo ra dành riêng cho các doanh nghiệp vừa và nhỏ đang tìm kiếm cách để nâng cao hiệu suất hoạt động của mình.</p></div>
+            </div>
+            <div class="col-lg-2 mx-auto info_col">
+                <div class="info_link_box">
+                    <h4>Trang</h4>
+                    <div class="info_links">
+                        <a class="active" href="Home.html">Trang chủ</a>
+                        <a class="" href="Our_service.html">Dịch vụ</a>
+                        <a class="" href="Our_service.html">Về chúng tôi</a>
+                        <a class="" href="Price.html">Giá cả</a>
+                        <a class="" href="Contact_us.html">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-lg-3 info_col ">
+                <h4>Đăng ký</h4>
+                <form action="Login_customer.html">
+                  <input type="text" placeholder="Nhập email" />
+                    <button type="submit">Đăng ký</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script src="js/search.js"></script>
+
+</body>
+
+</html>

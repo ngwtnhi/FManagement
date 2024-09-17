@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE ORDER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="img/fevicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/Admin/sidebar.css">
+    <link rel="stylesheet" href="css/Admin/create_order.css">
+</head>
+<body class="body" style="display: flex;">
+    <!-- sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <a href=""><img src="img/logo.png" alt=""></a>
+        </div>
+        <ul id="sidebar_menu" class="metismenu">
+            <li>
+                <a href="Dashboard.html"><span><i class="fa-solid fa-house"></i>Thống kê</span></a>
+            </li>
+            <li>
+                <a href="List_order.html"><span><i class="fa-solid fa-list-ul"></i>Danh sách đơn hàng</span></a>
+            </li>
+
+            <button class="toggleButton" onclick="order_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Tạo đơn</span></button>
+
+            <ul class="menu">
+                <li><a href="Create_order.html" style="background-color: var(--light-color);width: 175px;"><span><i class="fa-regular fa-file-lines"></i>Đơn lẻ</span></a></li>
+                <li><a href="Create_goods.html"><span><i class="fa-regular fa-file-excel"></i>Đơn hàng loạt</span></a></li>
+            </ul>
+            <li>
+                <a href="Confirm_order.html"><span><i class="fa-regular fa-folder-closed"></i>Xác nhận đơn hàng</span></a>
+            </li>
+            <button class="toggleButton" onclick="staff_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Nhân viên</span></button>
+
+            <ul class="staff">
+                <li><a href="Staff.html"><span><i class="fa-regular fa-file-lines"></i>Thông tin cá nhân</span></a></li>
+                <li><a href="Time_work.html"><span><i class="fa-regular fa-file-excel"></i>Ca làm việc</span></a></li>
+            </ul>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <div class="nav-bar">
+            <div class="infor">
+                <div class="avt">
+                   <a href=""><img src="img/avt.jpg" alt=""></a>
+                </div>
+                <div class="name">
+                    <span>Nguyệt</span>
+                </div>
+                <div class="log-out">
+                    <div id="myLogout" class="logout-content">
+                        <a href="#" onclick="return confirmLogout()"><span>Đăng xuất </span><i class="fa-solid fa-right-from-bracket" style="color: var(--turquoise-color);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="create-order">
+            <div class="person-order">
+                <div class="person-receive">
+                    <span class="title">Người gửi</span>
+                    <div class="person-name">
+                        <div class="person person-infor">                              
+                            <form id="myForm1" onsubmit="showInput(event)">
+                                <label for="fname1">Họ và tên</label><br>
+                                <input type="text" id="fname1" name="fname1" placeholder="Nhập họ tên..." required>
+                            </form>
+                        </div>
+                        <div class="person person-num">
+                            <form id="myForm2" onsubmit="showInput(event)">
+                                <label for="fname2">Số điện thoại</label><br>
+                                <input type="text" id="fname2" name="fname2" placeholder="Nhập số điện thoại..." required>
+                            </form>                            
+                        </div>
+                    </div>
+                    <div class="person person-address">   
+                        <label for="fname3">Địa chỉ</label><br>                                        
+                        <div class="person detail-add">
+                            <div class="row justify-content-md-center p-2">
+                                <div class="col-md-auto">
+                                    <select class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm" required>
+                                        <option value="" selected>Chọn tỉnh thành</option>           
+                                    </select>
+                                    
+                                    <select class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm" required>
+                                        <option value="" selected>Chọn quận huyện</option>
+                                    </select>
+                      
+                                    <select class="form-select form-select-sm" style="margin-right: 0;" id="ward" aria-label=".form-select-sm" required>
+                                        <option value="" selected>Chọn phường xã</option>
+                                    </select>
+                                </div>    
+                            </div>
+                        </div>      
+                        
+                        <div class="person person-add">
+                            <form id="myForm3" onsubmit="showInput(event)">
+                                <input type="text" id="fname3" style="width: 530px; margin-top: 10px;" name="fname3" placeholder="Nhập địa chỉ..." required>
+                            </form>                           
+                        </div>     
+
+                    </div>
+                </div>
+                <div class="person-send">
+                    <span class="title">Người nhận</span>
+                    <div class="person-name">
+                        <div class="person person-infor">                              
+                            <form id="myForm4" onsubmit="showInput(event)">
+                                <label for="fname4">Họ và tên</label><br>
+                                <input type="text" id="fname4" name="fname4" placeholder="Nhập họ tên..." required>
+                            </form>
+                        </div>
+                        <div class="person person-num">
+                            <form id="myForm5" onsubmit="showInput(event)">
+                                <label for="fname5">Số điện thoại</label><br>
+                                <input type="text" id="fname5" name="fname5" placeholder="Nhập số điện thoại..." required>
+                            </form>                            
+                        </div>
+                    </div>
+                    <div class="person person-address">   
+                        <label for="fname6">Địa chỉ</label><br>                                        
+                        <div class="person detail-add">
+                            <div class="row justify-content-md-center p-2">
+                                <div class="col-md-auto">
+                                    <select class="form-select form-select-sm mb-3" id="secity" aria-label=".form-select-sm" required>
+                                        <option value="" selected>Chọn tỉnh thành</option>           
+                                    </select>
+                                    
+                                    <select class="form-select form-select-sm mb-3" id="sedistrict" aria-label=".form-select-sm" required>
+                                        <option value="" selected>Chọn quận huyện</option>
+                                    </select>
+                      
+                                    <select class="form-select form-select-sm" style="margin-right: 0;" id="seward" aria-label=".form-select-sm" required>
+                                        <option value="" selected>Chọn phường xã</option>
+                                    </select>
+                                </div>    
+                            </div>
+                        </div>      
+                        
+                        <div class="person person-add">
+                            <form id="myForm6" onsubmit="showInput(event)">
+                                <input type="text" id="fname6" name="fname6" style="width: 530px; margin-top: 10px;" placeholder="Nhập địa chỉ..." required>
+                            </form>                           
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <!-- Hàng hóa  -->
+            <div class="person-items">
+                <div class="items-order">
+                    <span class="title">Hàng hóa</span>
+                    <div class="items-name">
+                        <div class="items items-infor">                              
+                            <form id="myForm7" onsubmit="showInput(event)">
+                                <label for="fname7">Tên sản phẩm</label><br>
+                                <input type="text" id="fname7" name="fname7" placeholder="Nhập tên sản phẩm..." required>
+                            </form>
+                        </div>
+                        <div class="items items-num">
+                            <form id="myForm8" onsubmit="showInput(event)">
+                                <label for="fname8">Số lượng</label><br>
+                                <input type="text" id="fname8" name="fname8" placeholder="Nhập số lượng..." required>
+                            </form>                            
+                        </div>
+                    </div> 
+                    <!-- Khối lượng  -->
+                    <div class="items items-weight">
+                        <label for="fname9">Khối lượng (kg)</label><br>                                        
+                        <form id="myForm9" onsubmit="showInput(event)">
+                            <input type="text" id="fname9" style="width: 571px;" name="fname9" placeholder="Nhập tổng khối lượng..." required>
+                        </form>                           
+                    </div> 
+    
+                    <!-- Kích cỡ  -->
+                    <label for="fname9">Kích cỡ (m)</label><br>                                        
+                    <div class="items-backgr">
+                        <div class="items-size">
+                            <div class="items items-width">                         
+                                <label>Chiều dài</label>                                      
+                                <form action="">
+                                    <select name="size" id="size1" required>
+                                        <option>Chọn chiều dài</option>
+                                        <option value="">Dưới 0.5</option>
+                                        <option value="">Từ 0.5 - 1.5</option>
+                                        <option value="">Trên 1.5</option>
+                                  </select>
+                                </form>
+                            </div>
+                            
+                            <div class="items items-wide">
+                                <label>Chiều rộng</label>                                      
+                                <form action="">
+                                    <select name="size" id="size2" required>
+                                        <option>Chọn chiều rộng</option>
+                                        <option value="">Dưới 0.5</option>
+                                        <option value="">Từ 0.5 - 1.5</option>
+                                        <option value="">Trên 1.5</option>
+                                  </select>
+                                </form>                         
+                            </div>
+                            <div class="items items-high">
+                                <label>Chiều cao</label>                                      
+                                <form action="">
+                                    <select name="size" id="size3" required>
+                                        <option>Chọn chiều cao</option>
+                                        <option value="">Dưới 0.5</option>
+                                        <option value="">Từ 0.5 - 1.5</option>
+                                        <option value="">Trên 1.5</option>
+                                  </select>
+                                </form>                          
+                            </div>
+                        </div> 
+                    </div>                             
+                </div>
+                <!-- Vận chuyển -->
+                <div class="person-transform">
+                    <span class="title">Thông tin vận chuyển</span>
+                    <div class="transform-name">
+                        <div class="items transform-infor">                              
+                            <form onsubmit="showInput(event)">
+                                <label for="fname13">Loại hình vận chuyển</label><br>
+                                <form action="">
+                                    <select id="shippingMethod" required>
+                                        <option>Chọn loại hình</option>
+                                        <option value="standard">Tiết kiệm</option>
+                                        <option value="express">Nhanh</option>
+                                        <option value="overnight">Hoả tốc</option>
+                                  </select>
+                                  <div id="priceDisplay"></div> 
+                                </form>      
+                            </form>
+                        </div>
+                        <div class="items transform-num" style="margin-top: 4px;">
+                            <form id="myForm14" onsubmit="showInput(event)">
+                                <label for="fname14" >Thu hộ COD</label><br>
+                                <input type="text" id="fname14" name="fname14" placeholder="COD..." required>
+                            </form>                            
+                        </div>
+                    </div>
+                    
+                    <div class="items transform-note">
+                        <form id="myForm15" onsubmit="showInput(event)">
+                            <label for="fname15">Ghi chú</label><br>
+                            <input type="text" id="fname15" style="width: 571px;" name="fname15" placeholder="Nhập ghi chú...">
+                        </form>                           
+                    </div>  
+                </div>
+
+                <!-- Tạo đơn hàng -->
+                <div class="ship">
+                    <div class="ship-order">
+                        <span class="title" style="color: black;">Phí giao hàng - </span>
+                    </div>
+                    <div class="create-ship">
+                        <form action="" method="get">
+                            <input type="submit" value="Tạo đơn hàng">
+                        </form>   
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </nav>
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/create_order.js"></script>
+    <script src="js/shipping.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="js/send_address.js"></script>
+    <script src="js/receive_address.js"></script>
+</body>
+</html>

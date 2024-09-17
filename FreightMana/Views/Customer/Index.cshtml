@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="~/img/fevicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/base.css">
+    <link rel="stylesheet" href="~/css/Admin/sidebar.css">
+    <link rel="stylesheet" href="~/css/Admin/dashboard.css">
+</head>
+<body class="body" style="display: flex;">
+    <!-- sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <a href=""><img src="~/img/logo.png" alt=""></a>
+        </div>
+        <ul id="sidebar_menu" class="metismenu">
+            <li>
+                <a href="/Customer" style="background-color: var(--light-color);width: 215px;"><span><i class="fa-solid fa-house"></i>Thống kê</span></a>
+            </li>
+            <li>
+                <a href="/CustomerOrder"><span><i class="fa-regular fa-folder"></i>Tạo đơn</span></a>
+            </li>
+        </ul>
+    </nav>
+    <nav class="main">
+        <div class="nav-bar">
+            <div class="infor">
+                <div class="avt">
+                    <a href=""><img src="img/avt.png" alt=""></a>
+                </div>
+                <div class="name">
+                    <span>@ViewBag.UserName</span>
+                </div>
+                <div class="log-out">
+                    <div id="myLogout" class="logout-content">
+                        <a href="/LoginCustomer"><span>Đăng xuất </span><i class="fa-solid fa-right-from-bracket" style="color: var(--turquoise-color);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="statistical">
+            <p style="font-weight: 650; font-size: 23px; padding-top: 20px; color: var(--turquoise-color);">Tổng quan</p>
+            <div class="statistical_list">
+                <div class="statistical_box">
+                    <span>Tổng đơn hàng</span>
+                    <h2>@ViewBag.TotalOrders</h2>
+                </div>
+                <div class="statistical_box">
+                    <span>Chưa giao</span>
+                    <h2>@ViewBag.PendingOrders</h2>
+                </div>
+                <div class="statistical_box">
+                    <span>Hoàn thành</span>
+                    <h2>@ViewBag.DeliveredOrders</h2>
+                </div>
+                <div class="statistical_box">
+                    <span>Đã hủy</span>
+                    <h2>@ViewBag.CancelledOrders</h2>
+                </div>
+            </div>
+        </div>
+        <div class="notification">
+            <div class="tab">
+                <button class="tablinks" id="defaultOpen" onclick="openPage(event, 'Page1')">Thông báo</button>
+                <button class="tablinks" onclick="openPage(event, 'Page2')">Đang giao</button>
+                <button class="tablinks" onclick="openPage(event, 'Page3')">Hoàn thành</button>
+                <button class="tablinks" onclick="openPage(event, 'Page4')">Đã hủy</button>
+            </div>
+            <div id="Page1" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>Thời gian</th>
+                        <th>Mã đơn hàng</th>
+                        <th style="width: 300px;">Người nhận</th>
+                        <th>Tổng phí</th>
+                        <th style="width: 600px;">Trạng thái</th>
+                    </tr>
+                    @foreach (var o in ViewBag.UserOrders)
+                    {
+                        <tr>
+                            <td>@o.ConfirmAt</td>
+                            <td>@o.OrderId</td>
+                            <td>@o.Name</td>
+                            <td>@o.Cod</td>
+                            <td>@o.Status</td>
+                        </tr>
+
+                    }
+
+                </table>
+            </div>
+
+            <div id="Page2" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>Thời gian</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Họ tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Tổng phí</th>
+                    </tr>
+                    @foreach (var o in ViewBag.Ordering)
+                    {
+                        <tr>
+                            <td>@o.ConfirmAt</td>
+                            <td>@o.OrderId</td>
+                            <td>@o.Name</td>
+                            <td>@o.PhoneNumber</td>
+                            <td>@o.Cod</td>      
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div id="Page3" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>Thời gian</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Họ tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Tổng phí</th>
+                        @foreach (var o in ViewBag.CompletedOrders){
+                        <tr>
+                            <td>@o.ConfirmAt</td>
+                            <td>@o.OrderId</td>
+                            <td>@o.Name</td>
+                            <td>@o.PhoneNumber</td>
+                            <td>@o.Cod</td>
+                        </tr>
+                        }
+                    </tr>
+                </table>
+            </div>
+
+            <div id="Page4" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>Thời gian</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Họ tên</th>
+                        <th>Số điện thoại</th>
+                        <th>Tổng phí</th>
+                    </tr>
+                    @foreach (var o in ViewBag.CancelOrders){
+                        <tr>
+                            <td>@o.ConfirmAt</td>
+                            <td>@o.OrderId</td>
+                            <td>@o.Name</td>
+                            <td>@o.PhoneNumber</td>
+                            <td>@o.Cod</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <script src="js/customer.js"></script>
+        <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/Admin/login_admin.css">
+    <link rel="stylesheet" href="~/css/base.css">
+    <link rel="icon" href="~/img/fevicon.png" type="image/x-icon">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+            <div class="front">
+                <img src="~/img/backImg.jpg" alt="">
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Đăng nhập</div>
+                    <form action="~/LoginAdmin/Login" method="post">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" name="Email" placeholder="Nhập email" required>
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="Password" placeholder="Nhập mật khẩu" required>
+                            </div>
+
+                            <div class="text">
+                                <a href="#" style="color: var(--blue-color);">Quên mật khẩu</a>
+                            </div>
+
+                            <div class="button input-box">
+                                <input type="submit" style="font-size: 16px;" value="Đăng nhập">
+                            </div>
+                            <div class="transfer_page">Khách hàng bấm <a href="@Url.Action("Index", "LoginCustomer")">vào đây</a> để đăng nhập</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

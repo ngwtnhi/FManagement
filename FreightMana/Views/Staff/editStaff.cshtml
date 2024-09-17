@@ -1,0 +1,96 @@
+﻿@model Staff
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAFF</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="~/img/fevicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/css/base.css">
+    <link rel="stylesheet" href="~/css/Admin/sidebar.css">
+    <link rel="stylesheet" href="~/css/Admin/staff.css">
+</head>
+<body class="body" style="display: flex;">
+    <!-- sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <a href=""><img src="~/img/logo.png" alt=""></a>
+        </div>
+        <ul id="sidebar_menu" class="metismenu">
+            <li>
+                <a href="@Url.Action("Index", "Dashboard")" style="background-color: var(--light-color);width: 215px;"><span><i class="fa-solid fa-house"></i>Thống kê</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "ListOrder")"><span><i class="fa-solid fa-list-ul"></i>Danh sách đơn hàng</span></a>
+            </li>
+
+            <button class="toggleButton" onclick="order_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Tạo đơn</span></button>
+
+            <ul class="menu">
+                <li><a href="@Url.Action("Index", "CreateOrder")"><span><i class="fa-regular fa-file-lines"></i>Đơn lẻ</span></a></li>
+                <li><a href="@Url.Action("Index", "CreateGoods")"><span><i class="fa-regular fa-file-excel"></i>Đơn hàng loạt</span></a></li>
+            </ul>
+            <li>
+                <a href="@Url.Action("Index", "Confirm")"><span><i class="fa-regular fa-folder-closed"></i>Xác nhận đơn hàng</span></a>
+            </li>
+            <button class="toggleButton" onclick="staff_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Nhân viên</span></button>
+
+            <ul class="staff">
+                <li><a href="@Url.Action("Index", "Staff")"><span><i class="fa-regular fa-file-lines"></i>Thông tin cá nhân</span></a></li>
+                <li><a href="@Url.Action("Index", "TimeWork")"><span><i class="fa-regular fa-file-excel"></i>Ca làm việc</span></a></li>
+            </ul>
+
+        </ul>
+    </nav>
+    <nav class="main">
+        <div class="nav-bar">
+            <div class="infor">
+                <div class="avt">
+                    <a href=""><img src="img/avt.png" alt=""></a>
+                </div>
+                <div class="name">
+                    <span>Nguyệt</span>
+                </div>
+                <div class="log-out">
+                    <div id="myLogout" class="logout-content">
+                        <a href="#" onclick="return confirmLogout()"><span>Đăng xuất </span><i class="fa-solid fa-right-from-bracket" style="color: var(--turquoise-color);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        <!-- The Modal -->
+        <div id="myModal" class="modal" style="display:block">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <a href="@Url.Action("Index", "Staff")"><span class="close">×</span></a>
+                
+                <form action="~/Staff/ConfirmEdit" method="post">
+                    <label for="name">Tên nhân viên</label>
+                    <input type="text" id="name" name="Name" value="@Model.Name">
+                    <label for="email">Email</label><br>
+                    <input type="email" id="email" name="Email" value=" @Model.Email"><br>
+                    <label for="phone">Số điện thoại</label><br>
+                    <input type="tel" id="phone" name="PhoneNumber" value=" @Model.PhoneNumber"><br>
+
+                    <label for="code">Chức vụ</label><br>
+                    <input type="hidden" value="@Model.Id" name="Id">
+                    <select id="shippingMethod" required name="Position" >
+                        <option value="Không có thông tin" selected="@(@Model.Position == "Không có thông tin")">Chọn chức vụ</option>
+                        <option value="Nhân viên" selected="@(@Model.Position == "Nhân viên")">Nhân viên</option>
+                        <option value="Shipper" selected="@(@Model.Position == "Shipper")">Shipper</option>
+                        <option value="Quản lý" selected="@(@Model.Position == "Quản lý")">Quản lý</option>
+
+                    </select><br>
+                    <button class="input confirml" type="submit" >Cập nhật</button>
+					<a href="@Url.Action("Index", "Staff")"><input class="input confirml" type="button" value="Hủy"></a>
+                </form>
+            </div>
+        </div>
+        
+        
+        <script src="~/js/sidebar.js"></script>
+        <script src="~/js/add_staff.js"></script>
+</body>
+</html>

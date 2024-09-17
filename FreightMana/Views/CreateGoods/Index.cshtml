@@ -1,0 +1,175 @@
+﻿@model List<Order>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/img/fevicon.png" type="image/x-icon">
+    <title>CREATE GOODS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="~/css/base.css">
+    <link rel="stylesheet" href="~/css/Admin/sidebar.css">
+    <link rel="stylesheet" href="~/css/Admin/create_goods.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="logo">
+            <a href=""><img src="~/img/logo.png" alt=""></a>
+        </div>
+        <ul id="sidebar_menu" class="metismenu">
+            <li>
+                <a href="@Url.Action("Index", "Dashboard")" style="background-color: var(--light-color);width: 215px;"><span><i class="fa-solid fa-house"></i>Thống kê</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "ListOrder")"><span><i class="fa-solid fa-list-ul"></i>Danh sách đơn hàng</span></a>
+            </li>
+
+            <button class="toggleButton" onclick="order_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Tạo đơn</span></button>
+
+            <ul class="menu">
+                <li><a href="@Url.Action("Index", "CreateOrder")"><span><i class="fa-regular fa-file-lines"></i>Đơn lẻ</span></a></li>
+                <li><a href="@Url.Action("Index", "CreateGoods")"><span><i class="fa-regular fa-file-excel"></i>Đơn hàng loạt</span></a></li>
+            </ul>
+            <li>
+                <a href="@Url.Action("Index", "Confirm")"><span><i class="fa-regular fa-folder-closed"></i>Xác nhận đơn hàng</span></a>
+            </li>
+            <button class="toggleButton" onclick="staff_Menu()"><span style="font-size: 16px; color: var(--grey-color);"><i class="fa-regular fa-folder"></i>Nhân viên</span></button>
+
+            <ul class="staff">
+                <li><a href="@Url.Action("Index", "Staff")"><span><i class="fa-regular fa-file-lines"></i>Thông tin cá nhân</span></a></li>
+                <li><a href="@Url.Action("Index", "TimeWork")"><span><i class="fa-regular fa-file-excel"></i>Ca làm việc</span></a></li>
+            </ul>
+
+        </ul>
+    </nav>
+    <nav class="main">
+        <div class="nav-bar">
+            <div class="infor">
+                <div class="avt">
+                    <a href=""><img src="~/img/avt.jpg" alt=""></a>
+                </div>
+                <div class="name">
+                    <span>Admin</span>
+                </div>
+                <div class="log-out">
+                    <div id="myLogout" class="logout-content">
+                        <a href="#" onclick="return confirmLogout()"><span>Đăng xuất </span><i class="fa-solid fa-right-from-bracket" style="color: var(--turquoise-color);"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <script>
+            function uploadFile() {
+                var fileInput = document.getElementById('customFileInput');
+                var file = fileInput.files[0];
+
+                if (file) {
+                    document.getElementById('mform').submit();
+                } else {
+                    alert('Vui lòng chọn một file Excel để tải lên!');
+                }
+            }
+           
+                function displayFileName(input) {
+                    var selectedFileName = document.getElementById('selectedFileName');
+                    if (input.files.length > 0) {
+                        selectedFileName.textContent = input.files[0].name;
+                    } else {
+                        selectedFileName.textContent = '';
+                    }
+
+                }
+        </script>
+        <div class="upload">
+           
+            <style>
+                #customFileInput {
+                    font-size:14px;
+                    width: 0.1px;
+                    height: 0.1px;
+                    opacity: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    z-index: -1;
+                }
+
+                #customFileLabel {
+                    box-shadow: 2px 2px 2px grey;
+                    font-size: 14px;
+                    display: inline-block;
+                    padding: 8px 12px;
+                    background-color: #4ba3f0;
+                    color: #fff;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                #selectedFileName{
+                    width:200px;
+                    margin-left:15px;
+                    margin-top:10px;
+                    overflow:hidden;
+                }
+            </style>
+            @{
+                if (ViewBag.Noti != null)
+                {
+                    <script>
+                        alert('@ViewBag.Noti');
+                    </script>
+                }
+                if (TempData["message"] != null)
+                {
+                
+                    <script>
+                        alert('@Html.Raw(TempData["message"])');
+                    </script>
+                }
+            }
+            <form action="/excel/upload" method="post" enctype="multipart/form-data" id="mform">
+           
+             
+            <div class="upload-file">
+                    <input type="file" id="customFileInput" onchange="displayFileName(this)" accept=".xlsx, .xls" name="excelFile">
+                    <label for="customFileInput" id="customFileLabel">Chọn file Excel</label>
+                    <span id="selectedFileName"></span>      
+                    <input type="button" value="Tải file mẫu" onclick="uploadFile()">
+				
+			</div></form>
+            
+        </div>
+        <div class="goods-backgr">
+            <table>
+                <tr>
+                    <th style="width: 280px; text-align: left;">Người nhận</th>
+                    <th style="width: 850px; text-align: left;">Địa chỉ nhận</th>
+                    <th>Cước phí</th>
+                    <th>COD</th>
+                    <th></th>
+                </tr>
+                @if (Model.Count!= 0 )
+                {
+                    foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>@order.Receiver.Name</td>
+                            <td>@order.Receiver.Address</td>
+                            <td>@order.TransportFee</td>
+                            <td>@order.Cod</td>
+                            
+                        </tr>
+                    }
+                }
+           
+                
+                
+            </table>
+        </div>
+    </nav>
+
+    <script src="~/js/sidebar.js"></script>
+</body>
+</html>
